@@ -19,21 +19,13 @@ public class ForwardOne extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
         String judge = (String)req.getAttribute("judge");
-        if (judge == null) {
-            out.println("<form action=\"forward2\" method=\"post\">\n" +
-                    "    用户名：<input type=\"text\" name=\"uname\" value=\"\"><br>\n" +
-                    "    密码：<input type=\"password\" name=\"pwd\" value=\"\"><br>\n" +
-                    "    <input type=\"submit\" value=\"login\">\n" +
-                    "</form>");
-        } else if("success".equals(judge)) {
-            out.println("欢迎" + req.getParameter("uname") + "登录");
-        } else {
-            out.println("用户名或密码错误");
-            out.println("<form action=\"forward2\" method=\"post\">\n" +
-                    "    用户名：<input type=\"text\" name=\"uname\" value=\"\"><br>\n" +
-                    "    密码：<input type=\"password\" name=\"pwd\" value=\"\"><br>\n" +
-                    "    <input type=\"submit\" value=\"login\">\n" +
-                    "</form>");
+        if (judge != null) {
+            out.println("账号或密码错误失败");
         }
+        out.println("<form action=\"forward2\" method=\"post\">\n" +
+                "    用户名：<input type=\"text\" name=\"uname\" value=\"\"><br>\n" +
+                "    密码：<input type=\"password\" name=\"pwd\" value=\"\"><br>\n" +
+                "    <input type=\"submit\" value=\"login\">\n" +
+                "</form>");
     }
 }

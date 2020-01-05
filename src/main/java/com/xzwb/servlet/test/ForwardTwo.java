@@ -20,10 +20,11 @@ public class ForwardTwo extends HttpServlet {
         String pwd = req.getParameter("pwd");
         System.out.println("uname : " + uname + "pwd : " + pwd);
         if ("xzwb".equals(uname)) {
-            req.setAttribute("judge", "success");
+            // 重定向
+            resp.sendRedirect("/maven/homePage");
         } else {
             req.setAttribute("judge", "fail");
+            req.getRequestDispatcher("forward1").forward(req, resp);
         }
-        req.getRequestDispatcher("forward1").forward(req, resp);
     }
 }
