@@ -13,7 +13,7 @@ public class LoginDaoImpl implements LoginDao {
         ResultSet rs = null;
         User user = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/weibo","root","520520cw...");
             String sql = "select *from t_user where uname = ? and pwd = ?";
             ps = conn.prepareStatement(sql);

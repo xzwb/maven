@@ -4,6 +4,15 @@ public class User {
     private String uname;
     private String password;
     private int uid;
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getUname() {
         return uname;

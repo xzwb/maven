@@ -27,7 +27,7 @@ public class LoginPage extends HttpServlet {
         }
         out.println("<img src=\"1.jpg\" width=\"128px\" alt=\"微博图标\">");
         out.println("<form action=\"login\" method=\"post\">\n" +
-                "    用户名：<input type=\"text\" name=\"uname\" value=\"\"><br>\n" +
+                "    用户名：<input type=\"text\" name=\"uname\" value=\"现在只有账号登录以后会加上的\"><br>\n" +
                 "    密码：<input type=\"password\" name=\"pwd\" value=\"\"><br>\n" +
                 "    <input type=\"submit\" value=\"登录\">\n" +
                 "</form>");

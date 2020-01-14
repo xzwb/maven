@@ -19,9 +19,16 @@ public class RegisterPage extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
         String judge = (String)req.getAttribute("registerJudge");
+        String isnull = (String)req.getAttribute("NULL?");
+        if (isnull != null) {
+            out.println("<h1>请完善所有信息</h1>");
+        }
         if (judge != null) {
             out.println("<h1>该手机号已经注册过微博了</h1>");
         }
+        req.removeAttribute("registerJudge");
+        req.removeAttribute("NULL?");
+        out.println("<h1>请完善以下信息</h1>");
         out.println("<form action=\"register\" method=\"post\">\n" +
                 "    用户名：<input type=\"text\" name=\"uname\" value=\"\"><br>\n" +
                 "    密码：<input type=\"password\" name=\"pwd\" value=\"\"><br>\n" +
