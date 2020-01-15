@@ -18,6 +18,6 @@ public class HomePage extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
-        out.println("nb");
+        out.println("<h1>ok!!you are right</h1>");
     }
 }
