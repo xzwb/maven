@@ -19,7 +19,7 @@ public class RegisterDaoImpl implements RegisterDao {
             ps = conn.prepareStatement(sql);
             ps.setString(1, user.getPhoneNumber());
             rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 if (rs.getString("uname") == null) {
                     user.setUid(-1);
                     return user;

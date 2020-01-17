@@ -6,6 +6,7 @@ import com.xzwb123.weibo.service.impl.LoginServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,12 @@ public class Login extends HttpServlet {
             request.setAttribute("judge", "no");
             request.getRequestDispatcher("loginPage").forward(request, response);
         } else {
+            String choose = request.getParameter("autoLogin");
+            if ("yes".equals(choose)) {
+                Cookie c = new Cookie("uid", user.getUid()+"");
+                c.setMaxAge(3*24*3600);
+                response.addCookie(c);
+            }
             response.sendRedirect("/maven/homePage");
         }
     }

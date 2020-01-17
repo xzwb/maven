@@ -14,7 +14,7 @@ public class LoginDaoImpl implements LoginDao {
         User user = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/weibo","root","520520cw...");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/weibo?characterEncoding=utf8","root","520520cw...");
             String sql = "select *from t_user where uname = ? and pwd = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, uname);
@@ -27,6 +27,47 @@ public class LoginDaoImpl implements LoginDao {
                 user.setPassword(rs.getString("pwd"));
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return user;
+    }
+
+    @Override
+    public User checkCookieDao(String uid) {
+        User user = null;
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/weibo?characterEncoding=utf8", "root", "520520cw...");
+            String sql = "select *from t_user where uid = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, uid);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                user = new User();
+                user.setUid(rs.getInt("uid"));
+                user.setUname(rs.getString("uname"));
+                user.setPassword(rs.getString("pwd"));
+            }
+        } catch(Exception e) {
             e.printStackTrace();
         } finally {
             try {

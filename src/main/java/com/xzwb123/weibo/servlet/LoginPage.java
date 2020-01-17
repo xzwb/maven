@@ -29,7 +29,7 @@ public class LoginPage extends HttpServlet {
         out.println("<form action=\"login\" method=\"post\">\n" +
                 "    用户名：<input type=\"text\" name=\"uname\" value=\"现在只有账号登录以后会加上的\"><br>\n" +
                 "    密码：<input type=\"password\" name=\"pwd\" value=\"\"><br>\n" +
-                "    <input type=\"submit\" value=\"登录\">\n" +
+                "    <input type=\"submit\" value=\"登录\">\n" +"<input type=\"checkbox\" name=\"autoLogin\" value=\"yes\"> 三天免登陆" +
                 "</form>");
         out.println("<a href=\"http://localhost:8080/maven/registerPage\">还没有账号?注册</a>");
     }
